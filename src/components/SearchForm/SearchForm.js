@@ -1,10 +1,20 @@
 import React from 'react';
+import { StyledSearchForm } from './styles';
 
-const SearchForm = () => {
+const SearchForm = ({ city, handleCityInput, handleSearchSubmit }) => {
   return (
-    <div>
-      <p>Serch Form</p>
-    </div>
+    <StyledSearchForm onSubmit={handleSearchSubmit}>
+      <h2>Search restaurants</h2>
+      <div>
+        <input
+          id="search-city"
+          type="text"
+          value={city}
+          onChange={handleCityInput}
+        />
+        <button type="submit">search city</button>
+      </div>
+    </StyledSearchForm>
   );
 };
 

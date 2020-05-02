@@ -37,10 +37,23 @@ const Search = () => {
     handleFetchRestaurants();
   }, [handleFetchRestaurants]);
 
+  const handleCityInput = (event) => {
+    setCity(event.target.value);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    setUrl(`${API_ENDPOINT}${city}`);
+  };
+
   return (
     <div>
       <p>Search</p>
-      <SearchForm />
+      <SearchForm
+        city={city}
+        handleCityInput={handleCityInput}
+        handleSearchSubmit={handleSearchSubmit}
+      />
       <List
         restaurants={restaurants.data}
         isLoading={restaurants.isLoading}
