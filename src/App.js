@@ -5,7 +5,7 @@ import Search from './containers/Search/Search.js';
 function App() {
   return (
     <div className="App">
-      <div>drd 1812</div>
+      <h1>Restaurant Finder</h1>
       <Search />
     </div>
   );

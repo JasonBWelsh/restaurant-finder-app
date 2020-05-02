@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyledRestaurant } from './styles';
 
 const Restaurant = ({
   address,
@@ -12,11 +13,15 @@ const Restaurant = ({
   state,
 }) => {
   return (
-    <div>
+    <StyledRestaurant>
       <h3>{name}</h3>
-      <span>{city}</span>
-      <span>{price}</span>
-    </div>
+      <span>{address}</span>
+      <span>{`${city}, ${state}, ${country}`}</span>
+      <span>{zip}</span>
+      <span>Area: {area}</span>
+      <span>Phone: {phone}</span>
+      <span>Price rating: {price}</span>
+    </StyledRestaurant>
   );
 };
 
