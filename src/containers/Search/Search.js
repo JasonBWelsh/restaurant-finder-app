@@ -13,6 +13,7 @@ const Search = () => {
     isError: false,
   });
   const [city, setCity] = useState('toronto');
+  const [filter, setFilter] = useState('');
   const [url, setUrl] = useState(`${API_ENDPOINT}${city}`);
 
   const handleFetchRestaurants = useCallback(() => {
@@ -46,16 +47,24 @@ const Search = () => {
     setUrl(`${API_ENDPOINT}${city}`);
   };
 
+  const handleFilter = (event) => {
+    console.log('handleFilter log restaurantList:', restaurants.data);
+    setFilter(event.target.value);
+  };
+
   return (
     <div>
-      <p>Search</p>
       <SearchForm
         city={city}
+        filter={filter}
         handleCityInput={handleCityInput}
         handleSearchSubmit={handleSearchSubmit}
+        handleFilter={handleFilter}
       />
       <List
-        restaurants={restaurants.data}
+        restaurants={restaurants.data.filter((rest) =>
+          rest.name.toLowerCase().includes(filter.toLowerCase())
+        )}
         isLoading={restaurants.isLoading}
         isError={restaurants.isError}
       />
